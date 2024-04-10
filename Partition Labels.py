@@ -18,17 +18,17 @@ from typing import List
 
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        last_occurrence = {}
-        for i, char in enumerate(s):
-            last_occurrence[char] = i
+        last = {}
+        for i in range(len(s)):
+            last[s[i]] = i
 
         start = 0
         end = 0
         last_index = 0
         result = []
 
-        for i, char in enumerate(s):
-            last_index = max(last_index, last_occurrence[char])
+        for i in range(len(s)):
+            last_index = max(last_index, last[s[i]])
             if i == last_index:
                 result.append(end - start + 1)
                 start = end + 1
