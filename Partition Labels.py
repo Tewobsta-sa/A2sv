@@ -13,3 +13,25 @@ class Solution:
                 result.append(size)
                 size = 0
         return result
+#more optimized code
+from typing import List
+
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        last_occurrence = {}
+        for i, char in enumerate(s):
+            last_occurrence[char] = i
+
+        start = 0
+        end = 0
+        last_index = 0
+        result = []
+
+        for i, char in enumerate(s):
+            last_index = max(last_index, last_occurrence[char])
+            if i == last_index:
+                result.append(end - start + 1)
+                start = end + 1
+            end += 1
+
+        return result
