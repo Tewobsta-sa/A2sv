@@ -7,4 +7,4 @@ for i in range(m):
     while x < n and list1[x] <= list2[i]:
         x += 1
     cou.append(x)
-print(cou)
+print(' '.join(map(str, cou)))
